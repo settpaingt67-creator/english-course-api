@@ -1,18 +1,16 @@
-require("dotenv").config();
-
 const express = require("express");
 const cors = require("cors");
+require("dotenv").config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
 const courseRoutes = require("./routes/courses");
-
 app.use("/api/courses", courseRoutes);
 
 app.get("/", (req, res) => {
-  res.send("English Course API is running");
+  res.send("API running");
 });
 
 module.exports = app;
