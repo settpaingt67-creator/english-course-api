@@ -71,4 +71,20 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+// UPDATE course title
+router.put("/edit/:id", async (req, res) => {
+  try {
+    const { title } = req.body;
+
+    await db.query(
+      "UPDATE courses SET title = ? WHERE id = ?",
+      [title, req.params.id]
+    );
+
+    res.json({ message: "Title updated" });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 module.exports = router;
