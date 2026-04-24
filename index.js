@@ -9,6 +9,9 @@ app.use(express.json());
 const courseRoutes = require("./routes/courses");
 app.use("/api/courses", courseRoutes);
 
+const authRoutes = require("./routes/auth");
+app.use("/api/auth", authRoutes);
+
 app.get("/", (req, res) => {
   res.send("API running");
 });
